@@ -1,16 +1,29 @@
 import './App.css';
-import Header from './component/header/header.jsx'
-import Main from './component/main/main.jsx'
+import { useState } from 'react';
+import Search from './components/search';
+import Add from './components/add';
 
 function App() {
+  const initialTodos = ["Task 1", "Task 2", "Task 3"];
+
+  const [todo, setTodo] = useState(initialTodos);
+
   return (
-    <body className="bg-white text-gray-900">
-  <div className="flex flex-col min-h-screen">
-        <Header/>
-        <Main/>
+    <>
+      <body class="flex-grow p-4 w-1/2 self-center">
+        <div id="todobg" class="bg-gray-100 rounded-lg shadow-md p-4 w-full">
+          <div id="todolist" class="space-y-8">
+            <div id="addcontent">
+              <Add todo={todo} setTodo={setTodo} />
+            </div>
+            
+            <div id="search">
+              <Search todo={todo} setTodo={setTodo} />
+            </div>
+          </div>
         </div>
-        </body>
+      </body>
+    </>
   );
 }
-
 export default App;
